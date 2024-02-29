@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:latest
+    container_name: sic
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "admin"
+    volumes:
+      - "./schemas:/var/lib/mysql"
+
+
