@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Http\Requests\StudentRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Redirect;
 
 class StudentController extends Controller
 {
@@ -14,7 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        // $students = Student::all();
+        $students = Student::paginate(5);
         return view('students', compact('students'));
     }
 
@@ -55,7 +57,8 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        // Mostrar el detalle
+        $student = Student::find($id);
+        return view('show-student', compact('student'));
     }
 
     /**
@@ -63,15 +66,19 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        // Mostrar el formulario de edición
+        $student = Student::find($id);
+        return view('edit-student', compact('student'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StudentRequest $request, string $id)
     {
-        // Procesar
+        $student = Student::find($id);
+        $student->update($request->all());
+
+        return redirect()->route('students.index')->with('notificacion', 'Estudiante actualizado correctamente');
     }
 
     /**
@@ -79,6 +86,8 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        // Eliminar
+        $student = Student::find($id);
+        $student->delete();
+        return redirect()->route('students.index')->with('notificacion', 'Estudiante eliminado correctamente');
     }
 }
