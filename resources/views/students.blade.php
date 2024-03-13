@@ -58,6 +58,7 @@
                             {{ $student->lastname_student }}
                         </td>
                         <td class="flex justify-center mt-1">
+                            <a class="inline-block px-4 mr-2 py-2 bg-cyan-500 text-white font-semibold rounded-lg hover:bg-cyan-700 transition duration-300 ease-in-out" href="{{ route('reportes.index', $student->id) }}"> PDF </a>
                             <a href="{{ route('estudiantes.show', $student->id) }}"
                                 class="inline-block px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">Detalles</a>
                             <a href="{{ route('estudiantes.edit', $student->id) }}"

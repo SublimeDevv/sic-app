@@ -16,4 +16,9 @@ class Unit extends Model
         return $this->belongsTo(Subject::class);
     }
 
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
 }

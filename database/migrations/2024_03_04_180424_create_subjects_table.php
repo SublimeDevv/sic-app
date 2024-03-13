@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->string('subject_name');
             $table->integer('total_hours')->default(0);
             $table->text('objective')->nullable();
-            
+
             $table->timestamps();
         });
     }

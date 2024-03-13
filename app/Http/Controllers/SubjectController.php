@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Models\Unit;
+use App\Models\Student;
+
 
 class SubjectController extends Controller
 {
@@ -14,7 +16,11 @@ class SubjectController extends Controller
     public function index()
     {
         $units = Subject::find(1)->units()->get();
-        $subject = Unit::find(2)->subject()->get();
+        $subject = Unit::find(1)->subject()->get();
+
+        $activities=Student::find(1)->activities()->get();
+        dd($activities);
+
         return view('show-subject', compact('units', 'subject'));
     }
 

@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LoginTestController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\TestController;
 
 //Primera forma de proteger rutas
@@ -41,6 +41,8 @@ Route::get('/posts/create', [PostController::class, 'create'])->name('posts.crea
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 Route::resource('estudiantes', StudentController::class);
+
+Route::get('reportes/{estudiante}', [ReportsController::class, 'print_cardex'])->name('reportes.index');
 
 /*
 |--------------------------------------------------------------------------
