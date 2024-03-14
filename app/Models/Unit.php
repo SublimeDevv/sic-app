@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Unit extends Model
 {
     use HasFactory;
-    protected $fillable = ['unit_name', 'objective', 'subject_id'];
+    protected $fillable = ['unit_name', 'qualification', 'objective', 'subject_id'];
 
     public function subject(): BelongsTo
     {

@@ -15,4 +15,10 @@ class Activity extends Model
     {
         return $this->belongsTo(Unit::class);
     }
+
+    public function students()
+{
+    return $this->belongsToMany(Student::class, 'activity_student');
+}
+
 }

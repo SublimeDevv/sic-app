@@ -19,8 +19,8 @@ class Student extends Model
         'comments'
     ];
 
-    public function activities():BelongsToMany
+    public function activities(): BelongsToMany
     {
-        return $this->belongsToMany(Activity::class);
+        return $this->belongsToMany(Activity::class, 'activity_student');
     }
 }

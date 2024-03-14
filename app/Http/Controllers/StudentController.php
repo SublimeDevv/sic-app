@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Http\Requests\StudentRequest;
 use Illuminate\Http\Request;
+use App\Models\Activity;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
@@ -57,8 +58,10 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
+        $activities=Student::find($id)->activities()->get();
+        // dd($activities);
         $student = Student::find($id);
-        return view('show-student', compact('student'));
+        return view('show-student', compact('student', 'activities'));
     }
 
     /**
